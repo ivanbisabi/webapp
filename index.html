@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+
+  <title>Hello, world!</title>
+</head>
+
+
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+
+      </div>
+      <div class="col-6">
+        <select class="custom-select mr-sm-2" id="inlineFormCustomSelectGender">
+          <option value="" selected>Sesso</option>
+          <option value="male">Maschio</option>
+          <option value="female">Femmina</option>
+        </select>
+
+        <select class="custom-select mr-sm-2" id="inlineFormCustomSelectNazionalita">
+          <option value="" selected>Nazionalità</option>
+          <option value="AU">Australia</option>
+          <option value="BR">Brasile</option>
+          <option value="CH">Svizzera</option>
+          <option value="DE">Germania</option>
+          <option value="DK">Danimarca</option>
+          <option value="ES">Spagna</option>
+          <option value="FI">Finlandia</option>
+          <option value="FR">Francia</option>
+          <option value="GB">Gran Bretagna</option>
+          <option value="IE">Irlanda</option>
+          <option value="IR">Iran</option>
+          <option value="NL">Olanda</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary mb-2" id="submit">Submit</button>
+      </div>
+      <div class="col-3">
+
+      </div>
+    </div>
+
+
+    <div class="output"></div> 
+
+
+
+
+    <script>
+
+
+
+
+      
+      $("#submit").click(function () {
+        var malefemale = $( "#inlineFormCustomSelectGender" ).val();
+        var nationality = $( "#inlineFormCustomSelectNazionalita" ).val();
+
+        $.ajax({
+          url: 'https://randomuser.me/api/',
+          data: {
+            gender: malefemale,
+            nat: nationality
+          },
+          dataType: 'json',
+          success: function (data) {
+
+            console.log(data);
+
+            var result = data.results[0];
+
+            $('.output').empty().append("<div><img src='" + result.picture.medium + "'><p>" + result.name.first + "</p></div>");
+
+          }
+        })
+
+      });
+
+      
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+    
+
+</body>
+
+</html>
