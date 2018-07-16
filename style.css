@@ -1,3 +1,13 @@
-.container {
-    padding-top: 60px;
+body {
+background: radial-gradient(#FFD4B5,#FFABA6);
 }
+
+.container {
+    padding-top: 50px;
+}
+
+
+.distance{
+    margin-top: 10px;
+}
+
